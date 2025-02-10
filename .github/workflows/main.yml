@@ -1,0 +1,24 @@
+name: Python Script Runner on Merge
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - develop
+
+jobs:
+  build:
+
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Calculate BMI
+      uses: ./.github/actions/python-test
+      with:
+        python-version: "3.13"
+        height: "2.75"
+        weight: "68"
