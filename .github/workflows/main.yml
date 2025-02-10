@@ -3,6 +3,9 @@ name: Python Script Runner on Merge
 on:
   push:
     branches:
+      - feature
+  pull_request:
+    branches:
       - develop
 
 jobs:
@@ -10,18 +13,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # GitHub Actionsの公式のセットアップPythonアクションを使用
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v5
       with:
-        python-version: '3.x'
-
-    - name: Install dependencies
-      run: |
-        pip install -r requirements.txt
+        python-version: '3.13'
 
     - name: Run Python script
       run: |
