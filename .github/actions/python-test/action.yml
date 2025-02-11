@@ -1,0 +1,19 @@
+name: "Python Test Action"
+description: "Set up Python, run tests"
+inputs:
+  python-version:
+    description: "Python version to use"
+    required: true
+    default: "3.13"
+runs:
+  using: "composite"
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ inputs.python-version }}
+
+    - name: Run tests
+      run: |
+        python scripts/test.py
+      shell: bash
