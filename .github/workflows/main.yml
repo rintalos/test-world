@@ -1,15 +1,14 @@
 name: Python Script Runner on Merge
 
 on:
-  push:
-    branches:
-      - feature
   pull_request:
+    types: [closed]
     branches:
       - develop
 
 jobs:
   test:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
 
     steps:
