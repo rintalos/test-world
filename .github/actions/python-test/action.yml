@@ -17,3 +17,7 @@ runs:
       run: |
         python scripts/test.py
       shell: bash
+
+    - name: Run BMI Calculator
+      run: python scripts/bmi.py ${{ inputs.height }} ${{ inputs.weight }}
+      shell: bash
