@@ -24,5 +24,6 @@ runs:
       env:
         HEIGHT: ${{ inputs.height }}
         WEIGHT: ${{ inputs.weight }}
+        PYTHONPASS: ${{ github.workspace }}/scripts
       run: python scripts/bmi.py
       shell: bash
