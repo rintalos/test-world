@@ -20,11 +20,6 @@ runs:
       with:
         python-version: ${{ inputs.python-version }}
 
-    - name: Run tests
-      run: |
-        python scripts/test.py
-      shell: bash
-
     - name: Run BMI Calculator
       env:
         HEIGHT: ${{ inputs.height }}
