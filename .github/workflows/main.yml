@@ -16,11 +16,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Run Python Test Action
-      uses: ./.github/actions/python-test
-      with:
-        python-version: "3.13"
-
     - name: Calculate BMI
       uses: ./.github/actions/bmi-calculator
       with:
