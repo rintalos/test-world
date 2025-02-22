@@ -5,6 +5,13 @@ inputs:
     description: "Python version to use"
     required: true
     default: "3.13"
+  height:
+    description: "Height"
+    required: true
+  weight:
+    description: "Weight"
+    required: true
+
 runs:
   using: "composite"
   steps:
@@ -19,6 +26,9 @@ runs:
       shell: bash
 
     - name: Run BMI Calculator
-      run: python scripts/bmi.py ${{ inputs.height }} ${{ inputs.weight }}
+      env:
+        HEIGHT: ${{ inputs.height }}
+        WEIGHT: ${{ inputs.weight }}
+      run: python scripts/bmi.py
       shell: bash
 

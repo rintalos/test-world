@@ -24,5 +24,6 @@ jobs:
     - name: Calculate BMI
       uses: ./.github/actions/bmi-calculator
       with:
+        python-version: "3.13"
         height: "1.75"
         weight: "68"
