@@ -1,4 +1,4 @@
-import sys
+import os
 
 
 def calculate_bmi(weight: float, height: float) -> float:
@@ -9,15 +9,15 @@ def calculate_bmi(weight: float, height: float) -> float:
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 3:
-        print("使用方法 python bmi.py ＜身長＞ ＜体重＞")
-        sys.exit(1)
-
     try:
-        height = float(sys.argv[1])
-        weight = float(sys.argv[2])
-        bmi = calculate_bmi(height, weight)
-        print(f"BMI: {bmi:.2f}")
-    except ValueError as e:
-        print(f"エラー: {e}")
-        sys.exit(1)
+        height = float(os.environ["HEIGHT"])
+        weight = float(os.environ["WEIGHT"])
+    except KeyError:
+        print("Error: 環境変数 HEIGHT または WEIGHT が設定されていません")
+        exit(1)
+    except ValueError:
+        print("Error: HEIGHT または WEIGHT が数値ではありません")
+        exit(1)
+
+    bmi = calculate_bmi(weight, height)
+    print(f"BMI: {bmi:.2f}")
