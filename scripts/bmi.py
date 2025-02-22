@@ -1,4 +1,5 @@
 import os
+from scripts.validate import Height, Weight
 
 
 def calculate_bmi(weight: float, height: float) -> float:
@@ -10,8 +11,12 @@ def calculate_bmi(weight: float, height: float) -> float:
 
 if __name__ == "__main__":
     try:
-        height = float(os.environ["HEIGHT"])
-        weight = float(os.environ["WEIGHT"])
+        height_input = float(os.environ["HEIGHT"])
+        weight_input = float(os.environ["WEIGHT"])
+
+        height = Height(height_input)
+        weight = Weight(weight_input)
+
     except KeyError:
         print("Error: 環境変数 HEIGHT または WEIGHT が設定されていません")
         exit(1)
@@ -19,5 +24,5 @@ if __name__ == "__main__":
         print("Error: HEIGHT または WEIGHT が数値ではありません")
         exit(1)
 
-    bmi = calculate_bmi(weight, height)
+    bmi = calculate_bmi(weight.value, height.value)
     print(f"BMI: {bmi:.2f}")
