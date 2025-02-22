@@ -30,5 +30,5 @@ runs:
         HEIGHT: ${{ inputs.height }}
         WEIGHT: ${{ inputs.weight }}
       run: python scripts/bmi.py
-      shell: bash
+
 
