@@ -20,5 +20,5 @@ jobs:
       uses: ./.github/actions/python-test
       with:
         python-version: "3.13"
-        height: "1.75"
+        height: "2.75"
         weight: "68"
